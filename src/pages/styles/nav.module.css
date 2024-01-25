@@ -1,5 +1,18 @@
+.main {
+  color: blanchedalmond;
+}
+
 .light {
   background-color: lightskyblue;
+  height: 50px;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: -webkit-fill-available;
+}
+
+.dark {
+  background-color: rgb(12, 34, 48);
   height: 50px;
   position: fixed;
   left: 0;

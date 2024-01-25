@@ -1,11 +1,15 @@
-import React from 'react'
-import { Navbar } from 'react-bootstrap'
+import React, { useState } from 'react'
+import { Button, Navbar, ToggleButton } from 'react-bootstrap'
 import styles from '../styles/nav.module.css'
  
 const Nav = () => {
+
+    const [theme,setTheme]=useState(false)
+
     return (
-        <Navbar className={`${styles.light}`}>
+        <Navbar className={`${styles.main} ${theme?styles.light:styles.dark}`}>
             Home
+            <ToggleButton id={""} value={""} onClick={Changecolor}>chng theme</ToggleButton>
         </Navbar>
     )
 }

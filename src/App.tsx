@@ -5,10 +5,12 @@ import TaskList from './pages/TaskList/TaskList';
 // import Main from './pages/Main';
 import InputForm from './pages/FormComponent';
 import TaskListHandler from './pages/TaskList/TaskListHandler';
+import Nav from './pages/TaskList/Nav';
 
 function App() {
   return (
     <div>
+      <Nav/>
       {/* <InputForm/> */}
      <TaskListHandler/>
     </div>
