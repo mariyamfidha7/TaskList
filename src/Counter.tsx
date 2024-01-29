@@ -1,20 +1,20 @@
-import React, { useReducer } from 'react'
+import React, { useReducer, useState } from 'react'
 import { Button } from 'react-bootstrap'
 
 
-const countReducer=(state:any,action:any)=>{
+const countReducer=(state:{count:number},action:{type:string,payload:number})=>{
 
     if(action.type==="increment"){
-        return {count:state.count+1};
+        return {count:state.count+action.payload};
     }
     else if(action.type==="decrement"){
-        return {count:state.count-1};
+        return {count:state.count-action.payload};
     }
     else if(action.type==="multiply"){
-        return {count:state.count*10};
+        return {count:state.count*action.payload};
     }
     else if(action.type==="divide"){
-        return {count:state.count/2};
+        return {count:state.count/action.payload};
     }
 
     return {...state}
@@ -23,14 +23,17 @@ const countReducer=(state:any,action:any)=>{
 const Counter = () => {
 
 
-    const [state,dispatch]=useReducer(countReducer,{count:0})
+    const [state,dispatch]=useReducer(countReducer,{count:1})
+    const [input,setInput]=useState(0)
   return (
     <div>Counter
         <h1>{state.count}</h1>
-        <Button variant='primary' onClick={()=>dispatch({type:"increment"})}>+</Button>
-        <Button variant='success' onClick={()=>dispatch({type:"decrement"})}>-</Button>
-        <Button variant='danger' onClick={()=>dispatch({type:"multiply"})}>*</Button>
-        <Button variant='warning' onClick={()=>dispatch({type:"divide"})}>/</Button>
+        <Button variant='primary' onClick={()=>dispatch({type:"increment", payload:input})}>+</Button>
+        <Button variant='success' onClick={()=>dispatch({type:"decrement", payload:input})}>-</Button>
+        <Button variant='danger' onClick={()=>dispatch({type:"multiply", payload:input})}>*</Button>
+        <Button variant='warning' onClick={()=>dispatch({type:"divide", payload:input})}>/</Button>
+
+        <input type='text' onChange={(e:React.ChangeEvent<HTMLInputElement>)=>setInput(parseInt(e.target.value))}></input>
     </div>
   )
 }

@@ -8,6 +8,7 @@ import TaskListHandler from './pages/TaskList/TaskListHandler';
 import Nav from './pages/TaskList/Nav';
 import ThemeContext from './components/ThemeContext/ThemeContext';
 import Counter from './Counter';
+import Color from './Color';
 
 function App() {
   return (
@@ -15,7 +16,8 @@ function App() {
       <ThemeContext>
       <Nav/>
 
-<Counter/>
+<Color/>
+{/* <Counter/> */}
       {/* <InputForm/> */}
      {/* <TaskListHandler/> */}
      </ThemeContext>
