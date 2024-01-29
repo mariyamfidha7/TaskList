@@ -7,6 +7,7 @@ import InputForm from './pages/FormComponent';
 import TaskListHandler from './pages/TaskList/TaskListHandler';
 import Nav from './pages/TaskList/Nav';
 import ThemeContext from './components/ThemeContext/ThemeContext';
+import Counter from './Counter';
 
 function App() {
   return (
@@ -14,8 +15,9 @@ function App() {
       <ThemeContext>
       <Nav/>
 
+<Counter/>
       {/* <InputForm/> */}
-     <TaskListHandler/>
+     {/* <TaskListHandler/> */}
      </ThemeContext>
     </div>
   );

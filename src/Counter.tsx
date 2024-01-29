@@ -2,19 +2,19 @@ import React, { useReducer } from 'react'
 import { Button } from 'react-bootstrap'
 
 
-const countReducer=(state,action)=>{
+const countReducer=(state:any,action:any)=>{
 
     if(action.type==="increment"){
-        return {state:state+1};
+        return {count:state.count+1};
     }
     else if(action.type==="decrement"){
-        return {state:state-1};
+        return {count:state.count-1};
     }
     else if(action.type==="multiply"){
-        return {state:state*10};
+        return {count:state.count*10};
     }
     else if(action.type==="divide"){
-        return {state:state/2};
+        return {count:state.count/2};
     }
 
     return {...state}
@@ -30,7 +30,7 @@ const Counter = () => {
         <Button variant='primary' onClick={()=>dispatch({type:"increment"})}>+</Button>
         <Button variant='success' onClick={()=>dispatch({type:"decrement"})}>-</Button>
         <Button variant='danger' onClick={()=>dispatch({type:"multiply"})}>*</Button>
-        <Button variant='primary' onClick={()=>dispatch({type:"divide"})}>/</Button>
+        <Button variant='warning' onClick={()=>dispatch({type:"divide"})}>/</Button>
     </div>
   )
 }
