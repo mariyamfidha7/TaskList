@@ -11,6 +11,9 @@ import Counter from './Counter';
 import Color from './Color';
 import CustomCounter from './CustomCounter';
 import { lazy, Suspense } from 'react';
+import { BrowserRouter } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
+import Login from './pages/TaskList/LoginPage';
 
 const TaskListHandler = lazy(()=>import('./pages/TaskList/TaskListHandler'))
 const Nav = lazy(()=>import('./pages/TaskList/Nav'))
@@ -19,15 +22,30 @@ const ThemeContext = lazy(()=>import('./components/ThemeContext/ThemeContext'))
 function App() {
   return (
     <div>
-      <ThemeContext>
-      <Nav/>
+
+      {/* <BrowserRouter></BrowserRouter> */}
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Login />}></Route>
+          <Route
+            path="tasklist"
+            element={
+              <Suspense fallback={<>Loading</>}>
+                <ThemeContext>
+                  <Nav></Nav> <TaskListHandler />{" "}
+                </ThemeContext>
+              </Suspense>
+            }
+          ></Route>
+        </Routes>
+      </BrowserRouter>
 
 {/* <CustomCounter/> */}
 {/* <Color/> */}
 {/* <Counter/> */}
       {/* <InputForm/> */}
-     <TaskListHandler/>
-     </ThemeContext>
+     {/* <TaskListHandler/>
+     </ThemeContext> */}
     </div>
   );
 }

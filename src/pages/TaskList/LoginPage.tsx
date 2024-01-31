@@ -1,36 +1,28 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { Form } from 'react-bootstrap';
-// import {Display} from './Display';
-
-const LoginPage = () => {
+import React, { useState,useRef } from 'react'
+import { Form,Button } from 'react-bootstrap'
+import { useNavigate } from 'react-router-dom';
+ 
+const Login = () =>{
+ 
     const [name, setName] = useState('');
-    const nameRef = useRef(null);
-
-    const [password, setPassword] = useState();
-    const passwordRef = useRef(null);
-
-    useEffect(() => {
-        console.log("rendered");
-    }, [name, password ]);
-
+    const nameRef = useRef(null)
+    const navigate=useNavigate();
+ 
+    const submit = () => {
+        nameRef.current && setName(nameRef.current['value']);
+    }
+ 
     return (
-        <>
-            <Form>
-                <Form.Group>
-                    <Form.Label htmlFor="name">Username:</Form.Label>
-                    <Form.Control type='text' id="name" ref={nameRef} />
-                </Form.Group>
-
-                <Form.Group>
-                    <Form.Label htmlFor="password">Password:</Form.Label>
-                    <Form.Control type='password' id="password" ref={passwordRef} />
-                </Form.Group>
-
-                
-            </Form>
-            {/* <Display name={name} age={age} ></Display > */}
-        </>
-    );
-};
-
-export default LoginPage;
+        <Form>
+            <Form.Group>;
+                <Form.Label htmlFor="name">Username</Form.Label>
+                <Form.Control type='text' id="name" ref={nameRef} />
+            </Form.Group>
+            <Form.Group>
+                <Button type='button' variant='primary' onClick={()=>{navigate('tasklist')}}>Login</Button>
+            </Form.Group>
+        </Form>
+    )
+}
+ 
+export default Login
