@@ -19,8 +19,8 @@ const Color = () => {
 
     const changeColor=(e:React.ChangeEvent<HTMLInputElement>)=>{
         setHexcode(e.target.value)
-        dispatch({type:"color", payload:{box, hexcode}})
-    }
+        dispatch({type:"color", payload:{box, hexcode:e.target.value}})
+    }   
 
   return (
     <div>Counter
